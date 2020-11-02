@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mealsApp/widgets/categoryItems.dart';
+import './categoryItems.dart';
 import '../data/dummy_data.dart';
 import './mealItem.dart';
 import '../models/meal.dart';
 
 class PerCategory extends StatefulWidget {
+  List<Meal> availableMeal;
+  PerCategory(this.availableMeal);
   //final String id;
   //final String title;
   //PerCategory(this.id, this.title);
@@ -25,7 +27,7 @@ class _PerCategoryState extends State<PerCategory> {
           ModalRoute.of(context).settings.arguments as Map<String, String>;
       categoryTitle = routeArgs['title'];
       final categoryID = routeArgs['id'];
-      displayedMeals = DUMMY_MEALS.where((meal) {
+      displayedMeals = widget.availableMeal.where((meal) {
         return meal.categories.contains(categoryID);
       }).toList();
     }

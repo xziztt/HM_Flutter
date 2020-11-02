@@ -14,6 +14,10 @@ class MealsInfo extends StatelessWidget {
     );
   }
 
+  void ordered() {
+    print("Ordered succesfully");
+  }
+
   Widget buildContainer(Widget child) {
     return Container(
         decoration: BoxDecoration(
@@ -76,40 +80,24 @@ class MealsInfo extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   color: Colors.black,
                   child: Text(
-                    "/ " + selectedMeal.ingredients[index],
+                    selectedMeal.ingredients[index],
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 itemCount: selectedMeal.ingredients.length,
               ),
             ),
-            buildTitle('Steps'),
-            buildContainer(
-              ListView.builder(
-                itemCount: selectedMeal.steps.length,
-                itemBuilder: (context, index) => ListTile(
-                  leading: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Text(" ${index + 1}")),
-                  title: Text(
-                    selectedMeal.steps[index],
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
+            SizedBox(
+              height: 30,
+            ),
+            RaisedButton(
+              child: Text("Add to order"),
+              onPressed: ordered,
+              color: Colors.white,
+              disabledColor: Colors.white,
+              elevation: 5,
             )
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
-        elevation: 10,
-        onPressed: () {
-          Navigator.of(context).pop(id);
-        },
-        child: Icon(
-          Icons.delete,
-          color: Colors.white,
         ),
       ),
     );

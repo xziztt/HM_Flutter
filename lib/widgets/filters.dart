@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mealsApp/widgets/drawer.dart';
-import 'tabs_screen.dart';
+import './drawer.dart';
+import './tabs_screen.dart';
 
 class Filters extends StatefulWidget {
+  final Function setFilter;
+  Map<String, bool> filterValues;
+  Filters(this.setFilter, this.filterValues);
   static const routeName = "/filters";
 
   @override
@@ -15,6 +18,16 @@ class _FiltersState extends State<Filters> {
   var vegetarian = false;
   var vegan = false;
   var lactoseFree = false;
+  @override
+  initState() {
+    glutenFree = widget.filterValues["gluten"];
+    vegetarian = widget.filterValues["vegetarian"];
+    vegan = widget.filterValues["vegan"];
+    lactoseFree = widget.filterValues["lactose"];
+
+    super.initState();
+  }
+
   Widget _buildSwitchTile(
       String title, var currentValue, Function updatedValue) {
     return SwitchListTile(
@@ -31,6 +44,19 @@ class _FiltersState extends State<Filters> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.save),
+              onPressed: () {
+                final Map<String, bool> valuesPass = {
+                  "gluten": glutenFree,
+                  "lactose": lactoseFree,
+                  "vegan": vegan,
+                  "vegetarian": vegetarian,
+                };
+                widget.setFilter(valuesPass);
+              })
+        ],
         backgroundColor: Colors.black,
         title: Text("Filters"),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mealsApp/data/dummydata.dart';
-import 'package:mealsApp/widgets/categoryItems.dart';
+import '../data/dummydata.dart';
+import '../widgets/categoryItems.dart';
 
 class CategoriesHome extends StatelessWidget {
   @override
