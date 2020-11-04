@@ -7,13 +7,67 @@ class OrderedListBuilder extends StatelessWidget {
   OrderedListBuilder(this.id, this.title, this.imgurl);
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-          color: Colors.black,
+    return Column(
+      children: [
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
           height: 100,
-          child: Row(
-            children: <Widget>[Image.network(imgurl)],
-          )),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 100,
+                  child: Image.network(
+                    imgurl,
+                    height: double.infinity,
+                  ),
+                ),
+                SizedBox(width: 40),
+                Center(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 30,
+                      ),
+                      SizedBox(
+                        width: 120,
+                        child: Text(
+                          "ITEM: ${title.toUpperCase()}",
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'PRICE GOES HERE',
+                        style: TextStyle(color: Colors.black),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 40,
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                  onPressed: null,
+                )
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

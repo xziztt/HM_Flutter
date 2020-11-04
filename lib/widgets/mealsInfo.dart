@@ -98,11 +98,13 @@ class MealsInfo extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            RaisedButton(
-              child: Text("Add to order"),
+            FloatingActionButton(
+              backgroundColor: Colors.red,
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
               onPressed: () => ordered(selectedMeal.id),
-              color: Colors.white,
-              disabledColor: Colors.white,
               elevation: 5,
             )
           ],
