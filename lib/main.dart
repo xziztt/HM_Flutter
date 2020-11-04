@@ -22,6 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<Meal> orderedMeals = [];
   Map<String, bool> _filterValues = {
     "gluten": false,
     "lactose": false,
@@ -72,9 +73,9 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         PerCategory.routeName: (context) => PerCategory(_availableMeals),
-        MealsInfo.routeName: (context) => MealsInfo(),
+        MealsInfo.routeName: (context) => MealsInfo(orderedMeals),
         Filters.routeName: (context) => Filters(_setFilter, _filterValues),
-        OrderedScreen.routeName: (context) => OrderedScreen(),
+        OrderedScreen.routeName: (context) => OrderedScreen(orderedMeals),
       },
     );
   }

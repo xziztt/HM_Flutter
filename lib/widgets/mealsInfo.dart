@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import '../data/dummy_data.dart';
+import '../models/meal.dart';
+import '../models/ordered_list.dart';
 
 class MealsInfo extends StatelessWidget {
+  final List<Meal> orderedMealId;
+  MealsInfo(this.orderedMealId);
+
   static const routeName = '/meals-info';
   Widget buildTitle(String title) {
     return Container(
@@ -14,7 +19,10 @@ class MealsInfo extends StatelessWidget {
     );
   }
 
-  void ordered() {
+  void ordered(String id) {
+    orderedMealId.add(DUMMY_MEALS.firstWhere((element) => element.id == id));
+    print(orderedMealId.last.title);
+    print(orderedMealId.length);
     print("Ordered succesfully");
   }
 
@@ -92,7 +100,7 @@ class MealsInfo extends StatelessWidget {
             ),
             RaisedButton(
               child: Text("Add to order"),
-              onPressed: ordered,
+              onPressed: () => ordered(selectedMeal.id),
               color: Colors.white,
               disabledColor: Colors.white,
               elevation: 5,
