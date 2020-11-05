@@ -38,11 +38,15 @@ class OrderedListBuilder extends StatelessWidget {
                       ),
                       SizedBox(
                         width: 120,
-                        child: Text(
-                          "ITEM: ${title.toUpperCase()}",
-                          overflow: TextOverflow.fade,
-                          style: TextStyle(
-                            color: Colors.black,
+                        child: Flexible(
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              "ITEM: ${title.toUpperCase()}",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
                         ),
                       ),

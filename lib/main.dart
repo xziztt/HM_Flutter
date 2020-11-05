@@ -9,6 +9,7 @@ import './widgets/mealsInfo.dart';
 import './widgets/tabs_screen.dart';
 import './widgets/filters.dart';
 import 'models/meal.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() {
   runApp(MyApp());
