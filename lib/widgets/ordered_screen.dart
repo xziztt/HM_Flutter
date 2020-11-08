@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/ordered_list.dart';
 import './order_list_builder.dart';
 import '../models/meal.dart';
+import '../submissionScreens/submitCustomerInfo.dart';
 
 class OrderedScreen extends StatelessWidget {
   final List<Meal> orderedMeals;
@@ -12,6 +13,14 @@ class OrderedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            RaisedButton(
+              color: Colors.white,
+              child: Icon(Icons.add),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(SubmitCustomer.routeName),
+            )
+          ],
           title: Text("ORDERS"),
         ),
         body: orderedMeals.isEmpty

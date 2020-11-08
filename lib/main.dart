@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mealsApp/managerStuff/loginHome.dart';
 import './data/dummy_data.dart';
 import './widgets/categoryHome.dart';
 import './widgets/categoryItems.dart';
@@ -9,6 +10,7 @@ import './widgets/mealsInfo.dart';
 import './widgets/tabs_screen.dart';
 import './widgets/filters.dart';
 import 'models/meal.dart';
+import './submissionScreens/submitCustomerInfo.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() {
@@ -77,6 +79,8 @@ class _MyAppState extends State<MyApp> {
         MealsInfo.routeName: (context) => MealsInfo(orderedMeals),
         Filters.routeName: (context) => Filters(_setFilter, _filterValues),
         OrderedScreen.routeName: (context) => OrderedScreen(orderedMeals),
+        SubmitCustomer.routeName: (context) => SubmitCustomer(),
+        LoginPage.routeName: (context) => LoginPage(),
       },
     );
   }

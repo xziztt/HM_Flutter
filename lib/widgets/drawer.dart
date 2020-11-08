@@ -61,6 +61,13 @@ class MainDrawer extends StatelessWidget {
               Navigator.of(context).pushNamed("/ordered-screen");
             },
           ),
+          buildListTile(
+            "Manager Login",
+            Icons.food_bank,
+            () {
+              Navigator.of(context).pushNamed("/ordered-screen");
+            },
+          ),
         ],
       ),
     );
