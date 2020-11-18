@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mealsApp/managerStuff/managerLogin.dart';
 
 Widget buildListTile(String title, IconData icon, Function tapFunction) {
   return ListTile(
@@ -41,7 +42,7 @@ class MainDrawer extends StatelessWidget {
             height: 50,
           ),
           buildListTile(
-            "Recipes",
+            "Items",
             Icons.restaurant,
             () {
               Navigator.of(context).pushNamed("/");
@@ -65,7 +66,7 @@ class MainDrawer extends StatelessWidget {
             "Manager Login",
             Icons.food_bank,
             () {
-              Navigator.of(context).pushNamed("/ordered-screen");
+              Navigator.of(context).pushNamed(LoginPage.routeName);
             },
           ),
         ],

@@ -3,49 +3,43 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-void main() => runApp(new SubmitCustomer());
+import 'package:mealsApp/models/ordered_list.dart';
+import 'package:mealsApp/screens/orderConfirmed.dart';
 
 String username = '';
 
-class SubmitCustomer extends StatelessWidget {
+class SubmitCustomer extends StatefulWidget {
   static final routeName = '/submit-customer';
   @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter App with MYSQL',
-      home: new MyHomePage(),
-    );
-  }
+  _SubmitCustomerState createState() => _SubmitCustomerState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _SubmitCustomerState extends State<SubmitCustomer> {
   TextEditingController name = new TextEditingController();
   TextEditingController email = new TextEditingController();
   TextEditingController mobile = new TextEditingController();
 
-  Future<List> senddata() async {
+  Future<List> senddata(orderId) async {
+    String orderIdString = orderId.toString();
     print("req");
 
-    await http.post("http://localhost/php_flutter/insertdata.php",
+    await http.post("http://192.168.29.232/php_flutter/insertdata.php",
         body: <String, String>{
+          "cid": orderIdString,
           "name": name.text,
           "email": email.text,
-          "mobile": mobile.text,
+          "phno": mobile.text,
+          "eid": "temp",
         });
   }
 
   @override
   Widget build(BuildContext context) {
+    int orderId = ModalRoute.of(context).settings.arguments;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Register"),
+        title: Text(orderId.toString()),
       ),
       body: Container(
         child: Center(
@@ -76,10 +70,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 decoration: InputDecoration(hintText: 'Mobile'),
               ),
               RaisedButton(
-                child: Text("Register"),
+                child: Text("Confirm Order"),
                 onPressed: () {
-                  print("here");
-                  senddata();
+                  senddata(orderId);
+                  orderId += 1;
+                  Navigator.of(context)
+                      .pushReplacementNamed('/order-confirmed');
                 },
               ),
             ],

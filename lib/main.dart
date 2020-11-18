@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mealsApp/managerStuff/loginHome.dart';
+import 'package:mealsApp/managerStuff/add_employees.dart';
+import 'package:mealsApp/managerStuff/delete_employees.dart';
+import 'package:mealsApp/managerStuff/managerOptions.dart';
+import 'package:mealsApp/managerStuff/managerLogin.dart';
+import 'package:mealsApp/screens/orderConfirmed.dart';
+import 'package:mealsApp/managerStuff/display_employees.dart';
 import './data/dummy_data.dart';
-import './widgets/categoryHome.dart';
-import './widgets/categoryItems.dart';
+
 import './widgets/ordered_screen.dart';
 import './widgets/itemsScreen.dart';
 import './widgets/mealsInfo.dart';
@@ -11,7 +15,6 @@ import './widgets/tabs_screen.dart';
 import './widgets/filters.dart';
 import 'models/meal.dart';
 import './submissionScreens/submitCustomerInfo.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 void main() {
   runApp(MyApp());
@@ -81,6 +84,11 @@ class _MyAppState extends State<MyApp> {
         OrderedScreen.routeName: (context) => OrderedScreen(orderedMeals),
         SubmitCustomer.routeName: (context) => SubmitCustomer(),
         LoginPage.routeName: (context) => LoginPage(),
+        DisplayEmployees.routeName: (context) => DisplayEmployees(),
+        OrderConfirmed.routeName: (context) => OrderConfirmed(),
+        ManagerOptions.routeName: (context) => ManagerOptions(),
+        DeleteEmployees.routeName: (context) => DeleteEmployees(),
+        AddEmployees.routeName: (context) => AddEmployees(),
       },
     );
   }
