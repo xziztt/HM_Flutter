@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "398648776439",
+    "firebase_url": "https://mealsapp-756ab.firebaseio.com",
+    "project_id": "mealsapp-756ab",
+    "storage_bucket": "mealsapp-756ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398648776439:android:37010b9ae040eb727d65f2",
+        "android_client_info": {
+          "package_name": "com.example.mealApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398648776439-k7h35mfvk1ua0bsns6s1b7ai23hobff1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq8Xiz3Q9rBtd2l4lqCoeGobYCkBmi4Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398648776439-k7h35mfvk1ua0bsns6s1b7ai23hobff1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

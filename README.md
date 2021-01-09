@@ -1,4 +1,3 @@
-# Hotel Management App
+# mealApp
 
-A flutter project for managing orders and employees at a hotel using mySQL.
-(Needs a UI overhaul)
+Flutter project to manage products at hotels/ Order food directly from an Android/IOS device.
