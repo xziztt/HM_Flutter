@@ -20,6 +20,7 @@ class Meal {
   final bool isLactoseFree;
   final bool isVegan;
   final bool isVegetarian;
+  final double price;
   const Meal(
       {@required this.id,
       @required this.categories,
@@ -33,5 +34,6 @@ class Meal {
       @required this.isGlutenFree,
       @required this.isLactoseFree,
       @required this.isVegan,
-      @required this.isVegetarian});
+      @required this.isVegetarian,
+      @required this.price});
 }

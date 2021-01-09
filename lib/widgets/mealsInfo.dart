@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import '../data/dummy_data.dart';
+import '../models/meal.dart';
+import '../models/ordered_list.dart';
+import 'package:toast/toast.dart';
+import './drawer.dart';
 
 class MealsInfo extends StatelessWidget {
+  final List<Meal> orderedMealId;
+  MealsInfo(this.orderedMealId);
+
   static const routeName = '/meals-info';
   Widget buildTitle(String title) {
     return Container(
@@ -14,7 +21,10 @@ class MealsInfo extends StatelessWidget {
     );
   }
 
-  void ordered() {
+  void ordered(String id) {
+    orderedMealId.add(DUMMY_MEALS.firstWhere((element) => element.id == id));
+    print(orderedMealId.last.title);
+    print(orderedMealId.length);
     print("Ordered succesfully");
   }
 
@@ -37,36 +47,21 @@ class MealsInfo extends StatelessWidget {
         element.id == id); //returns the first value where the condition is true
 
     return Scaffold(
-      appBar: PreferredSize(
-          child: Text("hello"), preferredSize: Size.fromHeight(0)),
+      drawer: MainDrawer(),
+      appBar: AppBar(
+        title: FittedBox(fit: BoxFit.fitWidth, child: Text(selectedMeal.title)),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Stack(children: <Widget>[
-              Container(
-                height: 260,
-                width: double.infinity,
-                child: Image.network(
-                  selectedMeal.imageUrl,
-                  fit: BoxFit.fill,
-                ),
+            Container(
+              height: 260,
+              width: double.infinity,
+              child: Image.network(
+                selectedMeal.imageUrl,
+                fit: BoxFit.fill,
               ),
-              Positioned(
-                  top: 30,
-                  left: 10,
-                  child: Container(
-                    height: 50,
-                    width: 200,
-                    color: Colors.white60,
-                    child: Text(
-                      selectedMeal.title,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ))
-            ]),
+            ),
             SizedBox(
               height: 20,
             ),
@@ -90,11 +85,19 @@ class MealsInfo extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            RaisedButton(
-              child: Text("Add to order"),
-              onPressed: ordered,
-              color: Colors.white,
-              disabledColor: Colors.white,
+            FloatingActionButton(
+              backgroundColor: Colors.red,
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                ordered(selectedMeal.id);
+                Toast.show("Order Added", context,
+                    backgroundColor: Colors.white10,
+                    duration: Toast.LENGTH_LONG,
+                    gravity: Toast.BOTTOM);
+              },
               elevation: 5,
             )
           ],

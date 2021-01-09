@@ -60,6 +60,7 @@ class _PerCategoryState extends State<PerCategory> {
               displayedMeals[index].duration,
               displayedMeals[index].affordability,
               displayedMeals[index].complexity,
+              displayedMeals[index].price,
               _removeItem);
         },
         itemCount: displayedMeals.length,

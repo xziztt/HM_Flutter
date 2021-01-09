@@ -9,9 +9,10 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Affordability affordability;
   final Complexity complexity;
+  final double price;
   final Function removeItem;
   MealItem(this.id, this.title, this.imageUrl, this.duration,
-      this.affordability, this.complexity, this.removeItem);
+      this.affordability, this.complexity, this.price, this.removeItem);
 
   String get getComplexity {
     switch (complexity) {
@@ -100,6 +101,8 @@ class MealItem extends StatelessWidget {
                       '$duration minutes',
                       style: TextStyle(color: Colors.black),
                     ),
+                    Text(price.toString(),
+                        style: TextStyle(color: Colors.black)),
                   ]),
                   Row(
                     children: <Widget>[

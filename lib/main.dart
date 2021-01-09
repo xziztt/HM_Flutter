@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mealsApp/itemsStuff/addNewItem.dart';
+import 'package:mealsApp/managerStuff/add_employees.dart';
+import 'package:mealsApp/managerStuff/delete_employees.dart';
+import 'package:mealsApp/managerStuff/managerOptions.dart';
+import 'package:mealsApp/managerStuff/managerLogin.dart';
+import 'package:mealsApp/screens/orderConfirmed.dart';
+import 'package:mealsApp/managerStuff/display_employees.dart';
 import './data/dummy_data.dart';
-import './widgets/categoryHome.dart';
-import './widgets/categoryItems.dart';
+import 'managerStuff/newManagerLogin.dart.bak';
 import './widgets/ordered_screen.dart';
 import './widgets/itemsScreen.dart';
 import './widgets/mealsInfo.dart';
 import './widgets/tabs_screen.dart';
 import './widgets/filters.dart';
 import 'models/meal.dart';
+import './submissionScreens/submitCustomerInfo.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,6 +29,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<Meal> orderedMeals = [];
   Map<String, bool> _filterValues = {
     "gluten": false,
     "lactose": false,
@@ -72,9 +80,18 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         PerCategory.routeName: (context) => PerCategory(_availableMeals),
-        MealsInfo.routeName: (context) => MealsInfo(),
+        MealsInfo.routeName: (context) => MealsInfo(orderedMeals),
         Filters.routeName: (context) => Filters(_setFilter, _filterValues),
-        OrderedScreen.routeName: (context) => OrderedScreen(),
+        OrderedScreen.routeName: (context) => OrderedScreen(orderedMeals),
+        SubmitCustomer.routeName: (context) => SubmitCustomer(),
+        LoginPage.routeName: (context) => LoginPage(),
+        DisplayEmployees.routeName: (context) => DisplayEmployees(),
+        OrderConfirmed.routeName: (context) => OrderConfirmed(),
+        ManagerOptions.routeName: (context) => ManagerOptions(),
+        DeleteEmployees.routeName: (context) => DeleteEmployees(),
+        AddEmployees.routeName: (context) => AddEmployees(),
+        ManagerLogin.routeName: (context) => ManagerLogin(),
+        AddNewItem.routeName: (context) => AddNewItem(),
       },
     );
   }
