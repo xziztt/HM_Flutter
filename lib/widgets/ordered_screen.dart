@@ -7,11 +7,23 @@ import '../submissionScreens/submitCustomerInfo.dart';
 class OrderedScreen extends StatefulWidget {
   final List<Meal> orderedMeals;
   OrderedScreen(this.orderedMeals);
+
   double addItems() {
     double sum = 0;
     orderedMeals.map((e) => sum += e.price);
     print(sum);
     return sum;
+  }
+
+  double _calculateTotal() {
+   // print("calculate price called");
+    double totalPrice = 0;
+   // print(orderedMeals[0].title);
+    for (int i = 0; i < orderedMeals.length; i++) {
+      totalPrice += orderedMeals[i].price;
+    }
+   // print(totalPrice);
+    return totalPrice;
   }
 
   static const routeName = "/ordered-screen";
@@ -39,9 +51,10 @@ class _OrderedScreenState extends State<OrderedScreen> {
             ),
             onPressed: () {
               orderId += 1;
+              double totalPrice = widget._calculateTotal();
               Navigator.of(context).pushNamed(
                 SubmitCustomer.routeName,
-                arguments: orderId,
+                arguments: [totalPrice, orderId],
               );
             },
           )

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mealsApp/itemsStuff/addNewItem.dart';
 import 'package:mealsApp/managerStuff/add_employees.dart';
 import 'package:mealsApp/managerStuff/delete_employees.dart';
+import 'package:mealsApp/managerStuff/display_customers.dart';
 import 'package:mealsApp/managerStuff/managerOptions.dart';
 import 'package:mealsApp/managerStuff/managerLogin.dart';
 import 'package:mealsApp/screens/orderConfirmed.dart';
@@ -92,6 +93,7 @@ class _MyAppState extends State<MyApp> {
         AddEmployees.routeName: (context) => AddEmployees(),
         ManagerLogin.routeName: (context) => ManagerLogin(),
         AddNewItem.routeName: (context) => AddNewItem(),
+        DisplayCustomers.routeName: (context) => DisplayCustomers(),
       },
     );
   }

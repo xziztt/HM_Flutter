@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mealsApp/itemsStuff/addNewItem.dart';
 import 'package:mealsApp/managerStuff/add_employees.dart';
 import 'package:mealsApp/managerStuff/delete_employees.dart';
+import 'package:mealsApp/managerStuff/display_customers.dart';
 import 'package:mealsApp/managerStuff/display_employees.dart';
 
 class ManagerOptions extends StatelessWidget {
@@ -39,6 +40,12 @@ class ManagerOptions extends StatelessWidget {
               child: Text("ADD ITEMS"),
               onPressed: () =>
                   Navigator.of(context).pushNamed(AddNewItem.routeName),
+            ),
+             FlatButton(
+              color: Colors.white,
+              child: Text("CUSTOMER LIST"),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(DisplayCustomers.routeName),
             )
           ],
         ),
