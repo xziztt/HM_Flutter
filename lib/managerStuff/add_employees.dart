@@ -102,6 +102,7 @@ class _AddEmployeesState extends State<AddEmployees> {
                 child: Text("ADD EMPLOYEE"),
                 onPressed: () {
                   senddata();
+                  Navigator.of(context).pop();
                 },
               ),
             ],

@@ -26,7 +26,6 @@ class _DisplayEmployeeHomeState extends State<DisplayEmployeeHome> {
 
   @override
   void initState() {
-    print("display employee");
     fetchData();
     super.initState();
   }
@@ -47,63 +46,70 @@ class _DisplayEmployeeHomeState extends State<DisplayEmployeeHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Employee List"),
+        title: Text("details"),
       ),
       body: ListView.builder(
           itemCount: data.length,
           itemBuilder: (BuildContext context, int index) => Container(
                 child: Container(
-                  width: 150,
+                  width: 200,
                   child: Row(
                     children: [
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 6,
+                        width: MediaQuery.of(context).size.width/6,
                         child: Text(
                           data[index]['EID'],
-                          style: TextStyle(fontSize: 15),
-                          overflow: TextOverflow.clip,
+                          style: TextStyle(fontSize: 20),
+                          overflow: TextOverflow.fade,
                         ),
                       ),
+                     
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 6,
+                         width: MediaQuery.of(context).size.width/6,
                         child: Text(
                           data[index]['NAME'],
                           overflow: TextOverflow.clip,
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
+                      
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 6,
+                         width: MediaQuery.of(context).size.width/6,
                         child: Text(
                           data[index]['AGE'],
                           overflow: TextOverflow.clip,
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
+                    
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 6,
+                         width: MediaQuery.of(context).size.width/6,
                         child: Text(
                           data[index]['ADDRESS'],
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(fontSize: 15),
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
+                     
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 6,
+                         width: MediaQuery.of(context).size.width/6,
                         child: Text(
                           data[index]['PHNO'],
                           overflow: TextOverflow.clip,
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
+                      
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 6,
+                         width: MediaQuery.of(context).size.width/6,
                         child: Text(
+                          
                           data[index]['SALARY'].toString(),
                           overflow: TextOverflow.clip,
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(fontSize: 20),
                         ),
                       ),
+                     
                     ],
                   ),
                 ),

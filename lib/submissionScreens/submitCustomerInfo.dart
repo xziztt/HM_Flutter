@@ -21,19 +21,18 @@ class _SubmitCustomerState extends State<SubmitCustomer> {
   TextEditingController mobile = new TextEditingController();
   TextEditingController eid = new TextEditingController();
 
-  Future<List> senddata(orderId,totalPrice) async {
+  Future<List> senddata(orderId, totalPrice) async {
     String orderIdString = orderId.toString();
     print("req");
 
-    await http.post("http://192.168.29.232/php_flutter/insertdata.php",
-        body: {
-          "cid": orderIdString,
-          "name": name.text,
-          "email": email.text,
-          "phno": mobile.text,
-          "total":totalPrice.toString(),
-          "eid": eid.text,
-          });
+    await http.post("http://192.168.29.232/php_flutter/insertdata.php", body: {
+      "cid": orderIdString,
+      "name": name.text,
+      "email": email.text,
+      "phno": mobile.text,
+      "total": totalPrice.toString(),
+      "eid": eid.text,
+    });
   }
 
   @override
@@ -41,6 +40,7 @@ class _SubmitCustomerState extends State<SubmitCustomer> {
     final List<num> args = ModalRoute.of(context).settings.arguments;
     int orderId = args[1];
     double totalPrice = args[0];
+    print(args[0]);
     //print(totalPrice);
 
     return Scaffold(
@@ -87,7 +87,7 @@ class _SubmitCustomerState extends State<SubmitCustomer> {
               RaisedButton(
                 child: Text("Confirm Order"),
                 onPressed: () {
-                  senddata(orderId,totalPrice);
+                  senddata(orderId, totalPrice);
                   orderId += 1;
                   Navigator.of(context)
                       .pushReplacementNamed('/order-confirmed');
